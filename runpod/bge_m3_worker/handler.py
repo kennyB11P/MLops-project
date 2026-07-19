@@ -5,6 +5,7 @@ import sys
 import traceback
 from typing import Any
 
+import numpy as np
 import runpod
 
 
@@ -71,9 +72,12 @@ def handler(event: dict[str, Any]) -> dict[str, Any]:
             return_dense=True,
             return_sparse=False,
             return_colbert_vecs=False,
-            normalize_embeddings=True,
         )
-        vector = encoded["dense_vecs"][0].astype("float32").tolist()
+        vector = encoded["dense_vecs"][0].astype("float32")
+        norm = np.linalg.norm(vector)
+        if norm > 0:
+            vector = vector / norm
+        vector = vector.tolist()
     except Exception as exc:  # noqa: BLE001
         return {
             "error": str(exc),
