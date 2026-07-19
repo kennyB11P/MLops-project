@@ -6,9 +6,9 @@ ENV PYTHONUNBUFFERED=1 \
     HF_HOME=/runpod-volume/hf_cache \
     TRANSFORMERS_CACHE=/runpod-volume/hf_cache
 
-COPY requirements.txt .
+COPY runpod/bge_m3_worker/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY handler.py .
+COPY runpod/bge_m3_worker/handler.py .
 
 CMD ["python", "-u", "handler.py"]
