@@ -5,7 +5,7 @@ Standalone RunPod Serverless handler for `BAAI/bge-m3` embeddings.
 ## RunPod Build Settings
 
 - Dockerfile path: `runpod/bge_m3_worker/Dockerfile`
-- Build context: `runpod/bge_m3_worker`
+- Build context: repository root
 
 ## Endpoint Payload
 
